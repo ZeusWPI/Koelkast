@@ -1,0 +1,26 @@
+{
+  "name": "koelkast",
+  "version": "0.0.0",
+  "description": "A front end application to communicate with the Tap API.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-coffee": "^2.3.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-util": "^3.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/becousae/Koelkast.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/becousae/Koelkast/issues"
+  },
+  "homepage": "https://github.com/becousae/Koelkast#readme"
+}
