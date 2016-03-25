@@ -1,9 +1,5 @@
-{ h1 }     = React.DOM
-{ render } = ReactDOM
-
-Comment = React.createClass
-  render: ->
-    h1 null, "Hello world"
+{ render } = require('react-dom')
+Comment    = require('./components/comment')
 
 $ ->
   element = React.createElement(Comment, name: "World", "Lorem ipsum")
