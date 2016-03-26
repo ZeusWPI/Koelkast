@@ -1,6 +1,9 @@
+React      = require('react')
 { render } = require('react-dom')
-Comment    = require('./components/comment')
+$          = require('jquery')
+
+Users      = require('./components/users')
 
 $ ->
-  element = React.createElement(Comment, name: "World", "Lorem ipsum")
+  element = React.createElement(Users, url: 'http://localhost:3000/users.json')
   render(element, document.getElementById('content'))

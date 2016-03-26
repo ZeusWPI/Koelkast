@@ -1,4 +1,5 @@
-{ div, h1 } = require('react').DOM
+React       = require('react')
+{ div, h1 } = React.DOM
 { render }  = require('react-dom')
 
 module.exports = React.createClass
