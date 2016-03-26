@@ -2,8 +2,8 @@ React      = require('react')
 { render } = require('react-dom')
 $          = require('jquery')
 
-Users      = require('./components/users')
+Start      = require('./components/start')
 
 $ ->
-  element = React.createElement(Users, url: 'http://localhost:3000/users.json')
+  element = React.createElement(Start)
   render(element, document.getElementById('content'))

@@ -12,7 +12,6 @@ module.exports = React.createClass
       type: 'GET'
       success:( (data) ->
         @setState { data }
-        console.log data
       ).bind(@)
       error:( (xhr, status, err) ->
         console.error @props.url, status, err.toString()
@@ -23,6 +22,6 @@ module.exports = React.createClass
     @loadUsersFromServer()
   render: ->
     userNodes = @state.data.map (user) ->
-      User(key: user.id, name: user.name)
+      User(key: user.id, name: user.name, avatar: user.avatar)
 
-    div null, userNodes
+    div className: 'pure-g', userNodes
