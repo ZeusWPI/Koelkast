@@ -6,7 +6,8 @@ var gulp   = require('gulp');
 var concat = require('gulp-concat');
 
 gulp.task('concat-css', function() {
+  var dest = './public';
   gulp.src('./build/css/*.css')
     .pipe(concat('bundle.css'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest(dest));
 });
