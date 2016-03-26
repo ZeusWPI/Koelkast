@@ -1,0 +1,47 @@
+@import 'variables.scss';
+
+.sidebar {
+  background: $sidebar-background-color;
+  color: $sidebar-color;
+  height: 100%;
+  position: relative;
+
+  .header {
+    margin: 80% 2em 0;
+    text-align: right;
+
+    h1 {
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    h2 {
+      font-weight: 300;
+      color: $sidebar-secondary-color;
+      margin: 0;
+    }
+
+    .node {
+      margin-top: 30px;
+    }
+
+    .pure-button {
+      background: transparent;
+      padding: 20px 0;
+      display: block;
+      border: 2px solid $sidebar-button-border;
+      color: #fff;
+      margin-top: 1em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 85%;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 2em;
+      margin-right: 2em;
+    }
+  }
+}

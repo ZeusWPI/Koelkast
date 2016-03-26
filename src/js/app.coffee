@@ -1,9 +1,14 @@
 React      = require('react')
 { render } = require('react-dom')
+{ IndexRoute, Router, Route, browserHistory } = require('react-router')
 $          = require('jquery')
 
-Start      = require('./components/start')
+Layout = require('./components/layout/layout')
+Start  = require('./components/start/start')
 
 $ ->
-  element = React.createElement(Start)
-  render(element, document.getElementById('content'))
+  render((
+    React.createElement Router, history: browserHistory,
+      React.createElement Route, path: "/", component: Layout,
+        React.createElement IndexRoute, component: Start
+), document.getElementById('content'))

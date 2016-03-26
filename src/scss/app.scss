@@ -1,13 +1,3 @@
-body {
-  font-size: 14px;
-}
-
-.user {
-  text-align: center;
-
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+html, body, #content, #content > .pure-g {
+  height: 100%;
 }
