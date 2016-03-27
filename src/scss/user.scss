@@ -7,6 +7,11 @@
   color: $user-color;
   border: 1px solid $sidebar-background-color;
 
+  &:hover {
+    cursor: pointer;
+    color: $user-hover-color;
+  }
+
   .user-avatar {
     border: 1px solid $user-avatar-border-color;
     width: 100px;
@@ -27,5 +32,11 @@
 
   .user-name {
     font-variant: small-caps;
+  }
+
+  .icon-down-open {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 1em;
   }
 }
