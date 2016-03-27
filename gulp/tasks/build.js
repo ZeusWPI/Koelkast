@@ -9,6 +9,7 @@ gulp.task('build', [
     'scss',
     'copy-css',
     'concat-css',
+    'copy-font',
     'jade',
     'browserify'
 ]);

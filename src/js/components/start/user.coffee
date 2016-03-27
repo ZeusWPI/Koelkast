@@ -8,4 +8,4 @@ module.exports = React.createClass
         div className: "user-avatar",
           img src: @props.avatar, className: "pure-img",
         span className: "user-name", @props.name
-        span className: "fa-chevron-down", null
+        span className: "icon icon-down-open", null

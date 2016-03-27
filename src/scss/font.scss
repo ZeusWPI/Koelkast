@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('./font/fontello.eot?31339855');
+  src: url('./font/fontello.eot?31339855#iefix') format('embedded-opentype'),
+  url('./font/fontello.woff?31339855') format('woff'),
+  url('./font/fontello.ttf?31339855') format('truetype'),
+  url('./font/fontello.svg?31339855#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-down-open:before { content: '\e800'; }
