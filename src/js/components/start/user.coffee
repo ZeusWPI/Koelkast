@@ -1,9 +1,9 @@
-React = require('react')
+React = require 'react'
 { div, span, img } = React.DOM
 
 module.exports = React.createClass
   handleClick: ->
-    @props.handleClick(@props.id)
+    @props.handleClick @props.id
   render: ->
     div className: "pure-u-1-4", onClick: @handleClick,
       div className: "user",

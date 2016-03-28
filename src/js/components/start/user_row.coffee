@@ -1,7 +1,7 @@
-React = require('react')
+React   = require 'react'
 { div } = React.DOM
 
-User = React.createFactory require('./user')
+User = React.createFactory require './user'
 
 module.exports = React.createClass
   render: ->
