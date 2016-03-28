@@ -1,8 +1,7 @@
 React   = require('react')
-{ div } = React.DOM
 $       = require('jquery')
 
-User    = React.createFactory require('./user')
+UserGrid = React.createFactory require('./user_grid')
 
 module.exports = React.createClass
   loadUsersFromServer: ->
@@ -11,7 +10,7 @@ module.exports = React.createClass
       dataType: 'json'
       type: 'GET'
       success:( (data) ->
-        @setState { data }
+        @setState { data: data }
       ).bind(@)
       error:( (xhr, status, err) ->
         console.error @props.url, status, err.toString()
@@ -21,7 +20,4 @@ module.exports = React.createClass
   componentDidMount: ->
     @loadUsersFromServer()
   render: ->
-    userNodes = @state.data.map (user) ->
-      User(key: user.id, name: user.name, avatar: user.avatar)
-
-    div className: 'pure-g', userNodes
+    UserGrid data: @state.data
