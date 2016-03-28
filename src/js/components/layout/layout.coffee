@@ -8,5 +8,5 @@ module.exports = React.createClass
     div className: "pure-g",
       div className: "pure-u-1-4 sidebar",
         Sidebar null,
-      div className: "pure-u-3-4",
+      div className: "pure-u-3-4 content",
         @props.children
