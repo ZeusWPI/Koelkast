@@ -4,9 +4,14 @@ React = require 'react'
 module.exports = React.createClass
   handleClick: ->
     @props.handleClick @props.id
+  userClass: ->
+    if @props.selected
+      "user selected"
+    else
+      "user"
   render: ->
     div className: "pure-u-1-4", onClick: @handleClick,
-      div className: "user",
+      div className: @userClass(),
         div className: "user-avatar",
           img src: @props.avatar, className: "pure-img border-img",
         span className: "user-name", @props.name

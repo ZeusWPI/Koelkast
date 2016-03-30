@@ -12,6 +12,11 @@
     color: $user-hover-color;
   }
 
+  &.selected {
+    border-bottom-color: white;
+    color: white;
+  }
+
   .user-avatar img {
     display: block;
     margin-left: auto;

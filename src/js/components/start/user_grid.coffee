@@ -21,7 +21,7 @@ module.exports = React.createClass
 
     while data.length
       user_row_data = data.splice 0,4
-      children.push UserRow key: data.length, data: user_row_data, handleClick: @handleClick
+      children.push UserRow key: data.length, data: user_row_data, handleClick: @handleClick, selected: state.selected
 
       match = $.grep user_row_data, (e) -> e.id == state.selected
       if match.length
