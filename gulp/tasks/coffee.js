@@ -9,7 +9,7 @@ var gutil  = require('gulp-util');
 gulp.task('coffee', function() {
   var dest = './build';
 
-  return gulp.src('./src/**/*.coffee')
+  return gulp.src('./app/**/*.coffee')
     .pipe(coffee({ bare: true }).on('error', gutil.log))
     .pipe(gulp.dest(dest))
 });

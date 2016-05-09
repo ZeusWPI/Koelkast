@@ -8,7 +8,7 @@ var jade = require('gulp-jade');
 gulp.task('jade', function () {
   var dest = './public';
 
-  return gulp.src('./index.jade')
+  return gulp.src('./app/index.jade')
     .pipe(jade({ pretty: true }))
     .pipe(gulp.dest(dest));
 });

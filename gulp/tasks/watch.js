@@ -5,10 +5,10 @@
 var gulp = require('gulp');
 
 gulp.task('watch', function(){
-  gulp.watch('./src/js/**/*.coffee', ['coffee']);
-  gulp.watch('./src/scss/*.scss', ['scss']);
-  gulp.watch('./src/index.jade', ['jade']);
+  gulp.watch('./app/js/**/*.coffee', ['coffee']);
+  gulp.watch('./app/scss/*.scss', ['scss']);
+  gulp.watch('./app/index.jade', ['jade']);
   gulp.watch('./build/js/*.js', ['browserify']);
   gulp.watch('./build/css/*.css', ['concat-css']);
-  gulp.watch('./src/vendor/css/*.css', ['copy-css']);
+  gulp.watch('./app/vendor/css/*.css', ['copy-css']);
 });
