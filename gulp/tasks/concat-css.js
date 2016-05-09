@@ -5,9 +5,10 @@
 var gulp   = require('gulp');
 var concat = require('gulp-concat');
 
-gulp.task('concat-css', function() {
+gulp.task('concat-css', ['scss', 'copy-css'], function() {
   var dest = './public';
-  gulp.src('./build/css/*.css')
+
+  return gulp.src('./build/css/*.css')
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest(dest));
 });

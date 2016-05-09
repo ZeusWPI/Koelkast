@@ -8,7 +8,8 @@ var gutil  = require('gulp-util');
 
 gulp.task('coffee', function() {
   var dest = './build';
-  gulp.src('./src/**/*.coffee')
-    .pipe(coffee({bare: true}).on('error', gutil.log))
+
+  return gulp.src('./src/**/*.coffee')
+    .pipe(coffee({ bare: true }).on('error', gutil.log))
     .pipe(gulp.dest(dest))
 });

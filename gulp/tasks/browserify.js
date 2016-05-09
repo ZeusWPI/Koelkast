@@ -6,9 +6,10 @@ var gulp       = require('gulp');
 var browserify = require('gulp-browserify');
 var rename     = require('gulp-rename');
 
-gulp.task('browserify', function() {
+gulp.task('browserify', ['coffee'], function() {
   var dest = './public';
-  gulp.src('./build/js/app.js')
+
+  return gulp.src('./build/js/app.js')
     .pipe(browserify())
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest(dest));

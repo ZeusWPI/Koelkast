@@ -11,4 +11,4 @@ $ ->
     React.createElement Router, history: browserHistory,
       React.createElement Route, path: "/", component: Layout,
         React.createElement IndexRoute, component: Start
-), document.getElementById 'content')
+  ), document.getElementById 'content')

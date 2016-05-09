@@ -7,6 +7,6 @@ var gulp = require('gulp');
 gulp.task('copy-css', function() {
   var dest = './build/css';
 
-  gulp.src('src/vendor/css/*.css')
+  return gulp.src('src/vendor/css/*.css')
     .pipe(gulp.dest(dest));
 });

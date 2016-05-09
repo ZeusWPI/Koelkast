@@ -4,11 +4,13 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var gutil  = require('gulp-util');
 
 gulp.task('scss', function () {
   var dest = './build/css';
-  gulp.src('./src/scss/*.scss')
-    .pipe(sass())
+
+  return gulp.src('./src/scss/*.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', gutil.log))
     .pipe(gulp.dest(dest));
 });
 
