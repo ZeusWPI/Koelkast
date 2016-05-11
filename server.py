@@ -15,8 +15,6 @@ PORT = 8000
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         mimetypes.add_type('application/font-woff2', '.woff2', False)
-        print(mimetypes.guess_type(self.path))
-        print(self.path)
         try:
             f = open('public/' + self.path, 'rb')
         except IOError:
