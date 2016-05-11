@@ -32,7 +32,7 @@ and a `public` directory. In here you'll find an `index.html`, a `bundle.css`, a
 
 Start the server (inside `public`).
 ```sh
-$ python3 -m http.server
+$ python3 server.py
 ```
 
 Use gulp to build your app, and watch for changes. Let this run in the background.
