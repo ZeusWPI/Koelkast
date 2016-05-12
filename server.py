@@ -4,14 +4,6 @@ import mimetypes
 
 PORT = 8000
 
-#  MIMETYPES = {
-    #  "css": "text/css",
-    #  "js": "text/js",
-    #  "woff": "application/font-woff",
-    #  "woff2": "application/font-woff2",
-    #  "ttf": "application/x-font-ttf"
-#  }
-
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         mimetypes.add_type('application/font-woff2', '.woff2', False)
