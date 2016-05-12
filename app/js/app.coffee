@@ -8,9 +8,9 @@ $            = require 'jquery'
 Layout = require './components/layout/layout'
 Users  = require './components/users/users'
 
-select = require './reducers/select'
+select_user = require './reducers/select_user'
 users = require './reducers/users'
-reducer = combineReducers({ select, users})
+reducer = combineReducers({ select_user, users})
 
 store = createStore(reducer)
 

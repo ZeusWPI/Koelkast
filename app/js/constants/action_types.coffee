@@ -1,2 +1,3 @@
-module.exports = SELECT: 'SELECT'
-module.exports = SET_USERS: 'SET_USERS'
+module.exports =
+  SELECT_USER: 'SELECT_USER'
+  SET_USERS: 'SET_USERS'
