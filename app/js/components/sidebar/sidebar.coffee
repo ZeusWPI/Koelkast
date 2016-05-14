@@ -11,3 +11,5 @@ module.exports = React.createClass
       h2 null, 'Persoonlijke barman van Zeus WPI'
       div className: 'node',
         Link to: '/', className: 'pure-button', 'Order as guest'
+      div className: 'node',
+        Link to: '/products', className: 'pure-button', 'View products'

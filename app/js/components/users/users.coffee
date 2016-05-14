@@ -13,10 +13,10 @@ UserCard = React.createClass
     handleClick = =>
       @props.handleClick(user)
     div className: 'pure-u-1-4', onClick: handleClick,
-      div className: 'user',
-        div className: 'user-avatar',
+      div className: 'grid-card',
+        div className: 'avatar',
           img src: user.avatar, className: 'pure-img border-img'
-        span className: 'user-name', user.name
+        span className: 'name', user.name
         span className: 'icon icon-down-open', null
 
 mapDispatchToUserProp = (dispatch) ->
@@ -37,7 +37,7 @@ UserRow = React.createFactory React.createClass
 UserGrid = React.createClass
   render: ->
     { users, select_user } = @props
-    div null, chunk(users, 4).map (users, i) =>
+    div className: 'grid', chunk(users, 4).map (users, i) =>
       div key: i,
         UserRow users: users
         if $.inArray(select_user, users) != -1

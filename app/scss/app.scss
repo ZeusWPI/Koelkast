@@ -9,7 +9,7 @@ html, body, #content, #content > .pure-g {
 }
 
 .content {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .border-img {
@@ -20,5 +20,4 @@ html, body, #content, #content > .pure-g {
   margin-right: auto;
   padding: 10px;
   border-radius: 50%;
-  margin-bottom: 10px;
 }
