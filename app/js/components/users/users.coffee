@@ -15,7 +15,7 @@ UserCard = React.createClass
     div className: 'pure-u-1-4', onClick: handleClick,
       div className: 'user',
         div className: 'user-avatar',
-          img src: @props.user.avatar, className: 'pure-img border-img'
+          img src: user.avatar, className: 'pure-img border-img'
         span className: 'user-name', user.name
         span className: 'icon icon-down-open', null
 
