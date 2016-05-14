@@ -30,7 +30,7 @@ and a `public` directory. In here you'll find an `index.html`, a `bundle.css`, a
 
 ### Development
 
-Start the server (inside `public`).
+Start the server.
 ```sh
 $ python3 server.py
 ```
