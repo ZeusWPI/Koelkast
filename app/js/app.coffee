@@ -28,5 +28,4 @@ $.ajax
     console.error @props.url, status, err.toString()
   ).bind(@)
 
-$ ->
-  render(React.createElement(Provider, store: store, React.createElement(Users)), document.getElementById 'content')
+render(React.createElement(Provider, store: store, React.createElement(Users)), document.getElementById 'content')
