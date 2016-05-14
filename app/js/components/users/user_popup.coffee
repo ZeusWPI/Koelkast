@@ -20,7 +20,10 @@ UserPopup = React.createClass
         div className: 'products',
           div className: 'pure-g',
             Product null,
-              img src: user.dagschotel.url
+              if user.dagschotel
+                img src: user.dagschotel.url
+              else
+                span className: 'icon icon-help', null
             most_ordered.map (p, i) ->
               Product key: i,
                 if p.url == undefined
