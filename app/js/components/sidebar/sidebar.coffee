@@ -12,4 +12,7 @@ module.exports = React.createClass
       div className: 'node',
         Link to: '/', className: 'pure-button', 'Order as guest'
       div className: 'node',
-        Link to: '/products', className: 'pure-button', 'View products'
+        if @props.path == "/"
+          Link to: '/products', className: 'pure-button', 'View products'
+        else if @props.path == "/products"
+          Link to: '/', className: 'pure-button', 'Order here'

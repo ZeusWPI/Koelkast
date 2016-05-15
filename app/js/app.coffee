@@ -5,6 +5,7 @@ React      = require 'react'
 { Provider } = require 'react-redux'
 $            = require 'jquery'
 { SET_USERS, SET_PRODUCTS }    = require './constants/action_types'
+{ syncHistoryWithStore, routerReducer } = require 'react-router-redux'
 
 Layout   = require './components/layout/layout'
 Users    = require './components/users/users'
@@ -15,15 +16,16 @@ Products = require './components/products/products'
 select_user = require './reducers/select_user'
 users       = require './reducers/users'
 products    = require './reducers/products'
-reducer     = combineReducers({ select_user, users, products})
+reducer     = combineReducers({ select_user, users, products, routing: routerReducer})
 
 store = createStore(reducer)
+history = syncHistoryWithStore(browserHistory, store)
 
 # RENDER PAGE
 
 render(
   React.createElement Provider, store: store,
-    React.createElement Router, history: browserHistory,
+    React.createElement Router, history: history,
         React.createElement Route, path: "/", component: Layout,
           React.createElement IndexRoute, component: Users
           React.createElement Route, path: 'products', component: Products
