@@ -47,6 +47,8 @@ $.ajax
     console.error usersUrl, status, err.toString()
   ).bind(@)
 
+# LOAD PRODUCTS
+
 productsUrl = "http://localhost:3000/products.json"
 $.ajax
   url: productsUrl
