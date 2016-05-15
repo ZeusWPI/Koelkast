@@ -16,7 +16,8 @@ Products = require './components/products/products'
 select_user = require './reducers/select_user'
 users       = require './reducers/users'
 products    = require './reducers/products'
-reducer     = combineReducers({ select_user, users, products, routing: routerReducer})
+status      = require './reducers/status'
+reducer     = combineReducers({ select_user, users, products, status, routing: routerReducer})
 
 store = createStore(reducer)
 history = syncHistoryWithStore(browserHistory, store)

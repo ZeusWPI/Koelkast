@@ -6,9 +6,7 @@ chunk              = require '../../utils/chunk'
 ProductCard = React.createClass
   render: ->
     { product } = @props
-    handleClick = =>
-      @props.handleClick(product)
-    div className: 'pure-u-1-4', onClick: handleClick,
+    div className: 'pure-u-1-4',
       div className: 'grid-card',
         div className: 'avatar',
           img src: product.avatar, className: 'pure-img border-img'
