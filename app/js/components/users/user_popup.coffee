@@ -3,6 +3,7 @@ React              = require 'react'
 { connect }        = require 'react-redux'
 { SELECT_USER }    = require '../../constants/action_types'
 fill               = require '../../utils/fill'
+Link               = React.createFactory require('react-router').Link
 
 Product = React.createFactory React.createClass
   render: ->
@@ -14,24 +15,22 @@ Product = React.createFactory React.createClass
 UserPopup = React.createClass
   render: ->
     { user, cancel } = @props
-    most_ordered = fill(user.most_ordered, { }, 3)
+    most_ordered = fill(user.quick_order, { }, 4)
     div className: 'pure-g user-popup',
       div className: 'pure-u-11-12',
         div className: 'products',
           div className: 'pure-g',
-            Product null,
-              if user.dagschotel
-                img src: user.dagschotel.url
-              else
-                span className: 'icon icon-help', null
             most_ordered.map (p, i) ->
               Product key: i,
                 if p.url == undefined
                   span className: 'icon icon-help', null
                 else
                   img src: p.url
-            Product null,
-              span null, 'Other'
+            div className: 'pure-u-1-5',
+              Link to: '/order/' + user.id,
+                div null,
+                  span null
+                  span null, 'Other'
       div className: 'pure-u-1-12 icon-cancel-wrapper',
         span className: 'icon icon-cancel', onClick: cancel, null
 

@@ -10,6 +10,7 @@ $            = require 'jquery'
 Layout   = require './components/layout/layout'
 Users    = require './components/users/users'
 Products = require './components/products/products'
+Order    = require './components/order/order'
 
 # STORE
 
@@ -30,6 +31,7 @@ render(
         React.createElement Route, path: "/", component: Layout,
           React.createElement IndexRoute, component: Users
           React.createElement Route, path: 'products', component: Products
+          React.createElement Route, path: 'order/:user_id', component: Order
   document.getElementById 'content'
 )
 

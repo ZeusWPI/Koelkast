@@ -3,16 +3,20 @@ React         = require 'react'
 { connect }   = require 'react-redux'
 { PROCESSING, PROCESSED, ERROR } = require '../../constants/status_types'
 
-statusToIcon = (status) ->
+switchIcon = (status) ->
   switch status
     when PROCESSING
-      'icon icon-spin6 animate-spin'
+      'icon-spin6 animate-spin'
     when PROCESSED
-      'icon icon-ok'
+      'icon-ok'
     when ERROR
-      'icon icon-cancel'
+      'icon-cancel'
     else
       null
+statusToIcon = (status) ->
+  classes = ['icon', 'status-icon']
+  classes.push switchIcon status
+  classes.join(' ')
 
 Status = React.createClass
   render: ->
@@ -26,8 +30,5 @@ Status = React.createClass
 
 mapStateToProps = (state) ->
   { status, message } = state.status
-  {
-    status: status,
-    message: message
-  }
+  { status, message }
 module.exports = connect(mapStateToProps, null)(Status)
