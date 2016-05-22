@@ -39,14 +39,14 @@ UserRow = React.createFactory React.createClass
 
 UserGrid = React.createClass
   render: ->
-    { users, select_user } = @props
+    { users, selectUser } = @props
     div className: 'grid', chunk(users, 4).map (users, i) =>
       div key: i,
         UserRow users: users
-        if $.inArray(select_user, users) != -1
-          UserPopup user: select_user
+        if $.inArray(selectUser, users) != -1
+          UserPopup user: selectUser
 
 mapStateToUsersProps = (state) ->
-  { users, select_user } = state
-  return { users, select_user }
+  { users, selectUser } = state
+  return { users, selectUser }
 module.exports = connect(mapStateToUsersProps, null)(UserGrid)
