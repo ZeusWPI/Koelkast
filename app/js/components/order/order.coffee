@@ -1,9 +1,10 @@
-React                = require 'react'
+React              = require 'react'
 { div, img, span } = React.DOM
-{ connect }          = require 'react-redux'
+{ connect }        = require 'react-redux'
 { INCREMENT_PRODUCT, DECREMENT_PRODUCT } = require '../../constants/action_types'
 
 CurrentOrder = React.createFactory require './current_order'
+Barcode      = React.createFactory require './barcode'
 
 ProductCard = React.createClass
   render: ->
@@ -23,11 +24,12 @@ Product = React.createFactory connect(null, mapDispatchToProp)(ProductCard)
 Order = React.createClass
   render: ->
     div className: 'pure-g',
-      div className: 'pure-u-11-12',
+      div className: 'pure-u-4-5',
         div className: 'grid pure-g',
+          Barcode null
           @props.products.map (p, i) ->
             Product key: i, product: p
-      div className: 'pure-u-1-12',
+      div className: 'pure-u-1-5',
         CurrentOrder null
 
 mapStateToProps = (state) ->

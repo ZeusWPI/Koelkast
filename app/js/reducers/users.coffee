@@ -6,4 +6,3 @@ module.exports = (state = [], action) ->
       return action.users
     else
       return state
-

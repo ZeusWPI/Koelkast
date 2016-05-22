@@ -4,7 +4,7 @@ React      = require 'react'
 { combineReducers, createStore } = require 'redux'
 { Provider } = require 'react-redux'
 $            = require 'jquery'
-{ SET_USERS, SET_PRODUCTS }    = require './constants/action_types'
+{ SET_USERS, SET_PRODUCTS, SET_BARCODES }    = require './constants/action_types'
 { syncHistoryWithStore, routerReducer } = require 'react-router-redux'
 
 Layout   = require './components/layout/layout'
@@ -14,12 +14,13 @@ Order    = require './components/order/order'
 
 # STORE
 
-selectUser   = require './reducers/select_user'
-users         = require './reducers/users'
-products      = require './reducers/products'
-status        = require './reducers/status'
+barcodes     = require './reducers/barcodes'
 currentOrder = require './reducers/current_order'
-reducer     = combineReducers({ selectUser, users, products, status, currentOrder, routing: routerReducer})
+products     = require './reducers/products'
+selectUser   = require './reducers/select_user'
+status       = require './reducers/status'
+users        = require './reducers/users'
+reducer      = combineReducers({ barcodes, selectUser, users, products, status, currentOrder, routing: routerReducer})
 
 store = createStore(reducer)
 history = syncHistoryWithStore(browserHistory, store)
@@ -68,4 +69,21 @@ $.ajax
   ).bind(@)
   error:( (xhr, status, err) ->
     console.error productsUrl, status, err.toString()
+  ).bind(@)
+
+# LOAD BARCODES
+
+barcodesUrl = "http://localhost:3000/barcodes.json"
+$.ajax
+  url: barcodesUrl
+  dataType: 'json'
+  type: 'GET'
+  success:( (data) ->
+    store.dispatch {
+      type: SET_BARCODES,
+      barcodes: data
+    }
+  ).bind(@)
+  error:( (xhr, status, err) ->
+    console.error barcodesUrl, status, err.toString()
   ).bind(@)
