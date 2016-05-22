@@ -3,13 +3,13 @@ React              = require 'react'
 { connect }        = require 'react-redux'
 chunk              = require '../../utils/chunk'
 
-ProductCard = React.createClass
+ProductCard = React.createFactory React.createClass
   render: ->
     { product } = @props
     div className: 'pure-u-1-4',
       div className: 'grid-card',
         div className: 'avatar',
-          img src: product.avatar, className: 'pure-img border-img'
+          img src: product.avatar, className: 'pure-img center-border-img'
         span className: 'name', product.name
         div null,
           span className: 'attr', '\u20AC', product.price
@@ -17,16 +17,11 @@ ProductCard = React.createClass
           span className: 'attr', product.category
         span null, product.stock, ' left'
 
-ProductRow = React.createFactory React.createClass
-  render: ->
-    div className: 'pure-g', @props.products.map (product, i) ->
-      React.createElement ProductCard, key: i, product: product
-
 ProductGrid = React.createClass
   render: ->
     { products } = @props
-    div className: 'grid', chunk(products, 4).map (products, i) =>
-      ProductRow key: i, products: products
+    div className: 'grid pure-g', products.map (product, i) =>
+      ProductCard key: i, product: product
 
 mapStateToProductsProps = (state) ->
   { products } = state

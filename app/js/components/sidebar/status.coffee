@@ -1,6 +1,7 @@
 React         = require 'react'
 { div, span } = React.DOM
 { connect }   = require 'react-redux'
+classNames    = require 'classnames'
 { PROCESSING, PROCESSED, ERROR } = require '../../constants/status_types'
 
 switchIcon = (status) ->
@@ -13,17 +14,13 @@ switchIcon = (status) ->
       'icon-cancel'
     else
       null
-statusToIcon = (status) ->
-  classes = ['icon', 'status-icon']
-  classes.push switchIcon status
-  classes.join(' ')
 
 Status = React.createClass
   render: ->
     { status, message } = @props
     if status != undefined
       div className: 'status',
-        span className: statusToIcon(status)
+        span className: classNames('icon', 'status-icon', switchIcon(status))
         message
     else
       null

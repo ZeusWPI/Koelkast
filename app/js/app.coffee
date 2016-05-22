@@ -14,11 +14,12 @@ Order    = require './components/order/order'
 
 # STORE
 
-select_user = require './reducers/select_user'
-users       = require './reducers/users'
-products    = require './reducers/products'
-status      = require './reducers/status'
-reducer     = combineReducers({ select_user, users, products, status, routing: routerReducer})
+selectUser   = require './reducers/select_user'
+users         = require './reducers/users'
+products      = require './reducers/products'
+status        = require './reducers/status'
+currentOrder = require './reducers/current_order'
+reducer     = combineReducers({ selectUser, users, products, status, currentOrder, routing: routerReducer})
 
 store = createStore(reducer)
 history = syncHistoryWithStore(browserHistory, store)

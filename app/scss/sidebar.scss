@@ -1,8 +1,8 @@
 @import 'variables.scss';
 
 .sidebar {
-  background: $sidebar-background-color;
-  color: $sidebar-color;
+  background: $light-primary-color;
+  color: $white;
   height: 100%;
   position: relative;
 
@@ -17,7 +17,7 @@
 
     h2 {
       font-weight: 300;
-      color: $sidebar-secondary-color;
+      color: $light-secondary-color;
       margin: 0;
     }
 
@@ -29,7 +29,7 @@
       background: transparent;
       padding: 20px 0;
       display: block;
-      border: 2px solid $sidebar-button-border;
+      border: 2px solid $light-secondary-color;
       color: #fff;
       margin-top: 1em;
       letter-spacing: 0.05em;

@@ -1,6 +1,7 @@
 React              = require 'react'
 { div, img, span } = React.DOM
 { connect }        = require 'react-redux'
+classNames         = require 'classnames'
 chunk              = require '../../utils/chunk'
 { SELECT_USER }    = require '../../constants/action_types'
 $                  = require 'jquery'
@@ -9,16 +10,18 @@ UserPopup = React.createFactory require './user_popup'
 
 UserCard = React.createClass
   render: ->
-    { user } = @props
+    { user, selected } = @props
     handleClick = =>
       @props.handleClick(user)
     div className: 'pure-u-1-4', onClick: handleClick,
-      div className: 'grid-card',
+      div className: classNames('grid-card', selected: selected),
         div className: 'avatar',
-          img src: user.avatar, className: 'pure-img border-img'
+          img src: user.avatar, className: 'pure-img center-border-img'
         span className: 'name', user.name
         span className: 'icon icon-down-open', null
 
+mapStateToUserProps = (state, ownProps) ->
+  { selected: state.select_user == ownProps.user }
 mapDispatchToUserProp = (dispatch) ->
   {
     handleClick: (user) ->
@@ -27,7 +30,7 @@ mapDispatchToUserProp = (dispatch) ->
         user: user
       }
   }
-User = connect(null, mapDispatchToUserProp)(UserCard)
+User = connect(mapStateToUserProps, mapDispatchToUserProp)(UserCard)
 
 UserRow = React.createFactory React.createClass
   render: ->

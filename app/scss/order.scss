@@ -1,0 +1,14 @@
+@import 'variables.scss';
+
+.order-item {
+  overflow: auto;
+  padding: 5px;
+
+  .avatar {
+    float: left;
+  }
+
+  .count {
+    color: $white;
+  }
+}

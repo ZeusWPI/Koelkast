@@ -1,34 +1,38 @@
 @import 'variables.scss';
 
 .user-popup {
-  background-color: $popup-background-color;
   border-width: 0px 1px;
   border-style: solid;
-  border-color: $sidebar-background-color;
-  color: $sidebar-color;
+  border-color: $light-primary-color;
+  color: $white;
   padding: 5px 0 5px 5px;
 
   .user-avatar {
-    border-right: 2px solid $sidebar-background-color;
+    border-right: 2px solid $light-primary-color;
     height: 100%;
   }
 
   .products {
-    border-left: 5px solid $sidebar-background-color;
-    border-right: 5px solid $sidebar-background-color;
+    border-left: 5px solid $light-primary-color;
+    border-right: 5px solid $light-primary-color;
     padding-bottom: 15px;
 
     .pure-u-1-5 {
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
       &.other {
         font-variant: small-caps;
       }
 
-      & > div {
+      & div {
         width: 100px;
         height: 100px;
         margin-left: auto;
         margin-right: auto;
-        border: 1px solid $user-avatar-border-color;
+        border: 1px solid $accent-blue;
         padding: 10px;
 
         span {
@@ -57,7 +61,7 @@
 
     .icon-cancel {
       display: block;
-      color: $user-color;
+      color: $dark-secondary-color;
       font-size: 1.5em;
       cursor: pointer;
       padding: 10px;

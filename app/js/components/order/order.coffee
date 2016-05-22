@@ -1,7 +1,35 @@
-React   = require 'react'
-{ div } = React.DOM
+React                = require 'react'
+{ div, img, span } = React.DOM
+{ connect }          = require 'react-redux'
+{ INCREMENT_PRODUCT, DECREMENT_PRODUCT } = require '../../constants/action_types'
 
-module.exports = React.createClass
+CurrentOrder = React.createFactory require './current_order'
+
+ProductCard = React.createClass
   render: ->
-    console.log @props
-    div null, "hallo"
+    { product, increment } = @props
+    div className: 'pure-u-1-4', onClick: increment,
+      div className: 'grid-card',
+        div className: 'avatar',
+          img src: product.avatar, className: 'pure-g center-border-img'
+        span className: 'icon icon-plus', null
+
+mapDispatchToProp = (dispatch, ownProps) ->
+  { product } = ownProps
+  increment: ->
+    dispatch { type: INCREMENT_PRODUCT, id: product.id }
+Product = React.createFactory connect(null, mapDispatchToProp)(ProductCard)
+
+Order = React.createClass
+  render: ->
+    div className: 'pure-g',
+      div className: 'pure-u-11-12',
+        div className: 'grid pure-g',
+          @props.products.map (p, i) ->
+            Product key: i, product: p
+      div className: 'pure-u-1-12',
+        CurrentOrder null
+
+mapStateToProps = (state) ->
+  products: state.products
+module.exports = connect(mapStateToProps, null)(Order)

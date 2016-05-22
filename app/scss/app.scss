@@ -2,6 +2,8 @@
 
 html, body, #content, #content > .pure-g {
   height: 100%;
+  background-color: $dark-primary-color;
+  color: $dark-secondary-color;
 }
 
 .icon {
@@ -13,11 +15,19 @@ html, body, #content, #content > .pure-g {
 }
 
 .border-img {
-  border: 1px solid $user-avatar-border-color;
-  width: 100px;
-  height: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  border: 1px solid $accent-blue;
   padding: 10px;
   border-radius: 50%;
+}
+
+.center-border-img {
+  @extend .border-img;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.small-border-img {
+  @extend .border-img;
+  width: 40px;
 }

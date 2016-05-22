@@ -2,7 +2,12 @@
 
 .status {
   margin: 2em 2em 0;
-  background-color: $user-background-color;
+  background-color: $dark-primary-color;
   padding: 10px;
   border-radius: 4px;
+  font-size: 12px;
+
+  .status-icon {
+    margin-right: 10px;
+  }
 }

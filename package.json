@@ -4,6 +4,7 @@
   "description": "A front end application to communicate with the Tap API.",
   "main": "gulpfile.js",
   "dependencies": {
+    "classnames": "^2.2.5",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.3.2",
@@ -13,7 +14,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
     "gulp-util": "^3.0.7",
+    "install": "^0.7.3",
     "jquery": "^2.2.2",
+    "npm": "^3.9.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.5",
