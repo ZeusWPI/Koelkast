@@ -1,7 +1,7 @@
 React              = require 'react'
 { div, img, span } = React.DOM
 { connect }        = require 'react-redux'
-{ INCREMENT_PRODUCT, DECREMENT_PRODUCT } = require '../../constants/action_types'
+{ incrementProduct } = require '../../actions/action_creators'
 
 CurrentOrder = React.createFactory require './current_order'
 Barcode      = React.createFactory require './barcode'
@@ -18,7 +18,7 @@ ProductCard = React.createClass
 mapDispatchToProp = (dispatch, ownProps) ->
   { product } = ownProps
   increment: ->
-    dispatch { type: INCREMENT_PRODUCT, id: product.id }
+    dispatch incrementProduct(product.id)
 Product = React.createFactory connect(null, mapDispatchToProp)(ProductCard)
 
 Order = React.createClass

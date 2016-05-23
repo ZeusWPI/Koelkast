@@ -3,7 +3,7 @@ React              = require 'react'
 { connect }        = require 'react-redux'
 classNames         = require 'classnames'
 chunk              = require '../../utils/chunk'
-{ SELECT_USER }    = require '../../constants/action_types'
+{ selectUser }     = require '../../actions/action_creators'
 $                  = require 'jquery'
 
 UserPopup = React.createFactory require './user_popup'
@@ -21,14 +21,11 @@ UserCard = React.createClass
         span className: 'icon icon-down-open', null
 
 mapStateToUserProps = (state, ownProps) ->
-  { selected: state.select_user == ownProps.user }
-mapDispatchToUserProp = (dispatch) ->
+  { selected: state.selectUser == ownProps.user }
+mapDispatchToUserProp = (dispatch) =>
   {
     handleClick: (user) ->
-      dispatch {
-        type: SELECT_USER,
-        user: user
-      }
+      dispatch selectUser(user)
   }
 User = connect(mapStateToUserProps, mapDispatchToUserProp)(UserCard)
 
@@ -39,14 +36,14 @@ UserRow = React.createFactory React.createClass
 
 UserGrid = React.createClass
   render: ->
-    { users, selectUser } = @props
+    { users, selectedUser } = @props
     div className: 'grid', chunk(users, 4).map (users, i) =>
       div key: i,
         UserRow users: users
-        if $.inArray(selectUser, users) != -1
-          UserPopup user: selectUser
+        if $.inArray(selectedUser, users) != -1
+          UserPopup user: selectedUser
 
 mapStateToUsersProps = (state) ->
-  { users, selectUser } = state
-  return { users, selectUser }
+  { users, selectedUser } = state
+  return { users, selectedUser }
 module.exports = connect(mapStateToUsersProps, null)(UserGrid)

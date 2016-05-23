@@ -1,8 +1,7 @@
 React                 = require 'react'
 { div, input, form }  = React.DOM
 { connect }           = require 'react-redux'
-{ INCREMENT_PRODUCT, STATUS } = require '../../constants/action_types'
-{ ERROR } = require '../../constants/status_types'
+{ incrementProduct, statusError } = require '../../actions/action_creators'
 
 Barcode = React.createClass
   onSubmit: (e) ->
@@ -20,9 +19,9 @@ mapStateToProps = (state) ->
       b.code == barcode
 mapDispatchToProps = (dispatch) ->
   handleSubmit: (id) ->
-    dispatch { type: INCREMENT_PRODUCT, id }
+    dispatch incrementProduct(id)
   failed: ->
-    dispatch { type: STATUS, status: ERROR, message: 'Unknown barcode' }
+    dispatch statusError('Unknown barcode')
 mergeProps = (stateProps, dispatchProps, ownProps) ->
   Object.assign {}, ownProps, handleSubmit: (barcode) ->
     barcode = stateProps.getProduct(barcode)

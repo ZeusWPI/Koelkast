@@ -1,7 +1,7 @@
 React              = require 'react'
 { div, img, span } = React.DOM
 { connect }        = require 'react-redux'
-{ SELECT_USER }    = require '../../constants/action_types'
+{ selectUser }     = require '../../actions/action_creators'
 fill               = require '../../utils/fill'
 Link               = React.createFactory require('react-router').Link
 
@@ -37,9 +37,6 @@ UserPopup = React.createClass
 mapDispatchToProps = (dispatch) ->
   {
     cancel: ->
-      dispatch {
-        type: SELECT_USER,
-        user: null
-      }
+      dispatch selectUser(null)
   }
 module.exports = connect(null, mapDispatchToProps)(UserPopup)

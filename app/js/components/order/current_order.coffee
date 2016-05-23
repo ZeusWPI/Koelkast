@@ -2,7 +2,7 @@ React       = require 'react'
 { div, img, button, span } = React.DOM
 { connect } = require 'react-redux'
 $           = require 'jquery'
-{ INCREMENT_PRODUCT, DECREMENT_PRODUCT } = require '../../constants/action_types'
+{ decrementProduct } = require '../../actions/action_creators'
 
 OrderItem = React.createFactory React.createClass
   render: ->
@@ -15,7 +15,7 @@ OrderItem = React.createFactory React.createClass
 mapDispatchToItemProps = (dispatch, ownProps) ->
   { product } = ownProps
   decrement: ->
-    dispatch { type: DECREMENT_PRODUCT, id: product.id }
+    dispatch decrementProduct(product.id)
 OrderItemWrapper = React.createFactory connect(null, mapDispatchToItemProps)(OrderItem)
 
 CurrentOrder = React.createClass
