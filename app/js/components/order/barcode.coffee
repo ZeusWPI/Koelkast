@@ -12,8 +12,7 @@ Barcode = React.createClass
   render: ->
     div className: 'pure-u-1 barcode-wrapper',
       form onSubmit: @onSubmit,
-        input type: 'number', className: 'barcode', autoFocus: true, placeholder: '123', ref: (node) =>
-            @input = node
+        input type: 'number', className: 'barcode', autoFocus: true, placeholder: '123', ref: (node) => @input = node
 
 mapStateToProps = (state) ->
   getProduct: (barcode) ->
