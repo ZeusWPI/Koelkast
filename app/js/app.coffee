@@ -1,31 +1,23 @@
-React      = require 'react'
-{ render } = require 'react-dom'
+React = require 'react'
 { IndexRoute, Router, Route, browserHistory } = require 'react-router'
-{ combineReducers, createStore }              = require 'redux'
-{ Provider } = require 'react-redux'
-$            = require 'jquery'
-{ syncHistoryWithStore, routerReducer } = require 'react-router-redux'
-
-Layout   = require './components/layout/layout'
-Users    = require './components/users/users'
-Products = require './components/products/products'
-Order    = require './components/order/order'
 
 # STORE
 
-barcodes     = require './reducers/barcodes'
-currentOrder = require './reducers/current_order'
-products     = require './reducers/products'
-selectedUser = require './reducers/selected_user'
-status       = require './reducers/status'
-users        = require './reducers/users'
-reducer      = combineReducers({ barcodes, selectedUser, users, products, status, currentOrder, routing: routerReducer})
-{ fetchUsers, fetchProducts, fetchBarcodes } = require './actions/action_creators'
+{ createStore }          = require 'redux'
+{ syncHistoryWithStore } = require 'react-router-redux'
+reducer                  = require './reducers/combine_reducer'
 
 store   = createStore(reducer)
 history = syncHistoryWithStore(browserHistory, store)
 
 # RENDER PAGE
+
+{ render } = require 'react-dom'
+{ Provider } = require 'react-redux'
+Layout       = require './components/layout/layout'
+Users        = require './components/users/users'
+Products     = require './components/products/products'
+Order        = require './components/order/order'
 
 render(
   React.createElement Provider, store: store,
@@ -38,6 +30,8 @@ render(
 )
 
 # LOAD INITIAL DATA
+
+{ fetchUsers, fetchProducts, fetchBarcodes } = require './actions/action_creators'
 
 fetchUsers().then (result) -> store.dispatch result
 fetchProducts().then (result) -> store.dispatch result
