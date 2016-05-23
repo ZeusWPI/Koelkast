@@ -4,7 +4,6 @@ React      = require 'react'
 { combineReducers, createStore }              = require 'redux'
 { Provider } = require 'react-redux'
 $            = require 'jquery'
-{ setUsers, setProducts, setBarcodes }  = require './actions/action_creators'
 { syncHistoryWithStore, routerReducer } = require 'react-router-redux'
 
 Layout   = require './components/layout/layout'
@@ -21,6 +20,7 @@ selectedUser = require './reducers/selected_user'
 status       = require './reducers/status'
 users        = require './reducers/users'
 reducer      = combineReducers({ barcodes, selectedUser, users, products, status, currentOrder, routing: routerReducer})
+{ fetchUsers, fetchProducts, fetchBarcodes } = require './actions/action_creators'
 
 store   = createStore(reducer)
 history = syncHistoryWithStore(browserHistory, store)
@@ -37,44 +37,8 @@ render(
   document.getElementById 'content'
 )
 
-# LOAD USERS
+# LOAD INITIAL DATA
 
-usersUrl = "http://localhost:3000/users.json"
-$.ajax
-  url: usersUrl
-  dataType: 'json'
-  type: 'GET'
-  success:( (data) ->
-    store.dispatch setUsers(data)
-  ).bind(@)
-  error:( (xhr, status, err) ->
-    console.error usersUrl, status, err.toString()
-  ).bind(@)
-
-# LOAD PRODUCTS
-
-productsUrl = "http://localhost:3000/products.json"
-$.ajax
-  url: productsUrl
-  dataType: 'json'
-  type: 'GET'
-  success:( (data) ->
-    store.dispatch setProducts(data)
-  ).bind(@)
-  error:( (xhr, status, err) ->
-    console.error productsUrl, status, err.toString()
-  ).bind(@)
-
-# LOAD BARCODES
-
-barcodesUrl = "http://localhost:3000/barcodes.json"
-$.ajax
-  url: barcodesUrl
-  dataType: 'json'
-  type: 'GET'
-  success:( (data) ->
-    store.dispatch setBarcodes(data)
-  ).bind(@)
-  error:( (xhr, status, err) ->
-    console.error barcodesUrl, status, err.toString()
-  ).bind(@)
+fetchUsers().then (result) -> store.dispatch result
+fetchProducts().then (result) -> store.dispatch result
+fetchBarcodes().then (result) -> store.dispatch result
