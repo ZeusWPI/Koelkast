@@ -6,7 +6,7 @@ chunk              = require '../../utils/chunk'
 ProductCard = React.createFactory React.createClass
   render: ->
     { product } = @props
-    div className: 'pure-u-1-4',
+    div className: 'pure-u-1-6',
       div className: 'grid-card',
         div className: 'avatar',
           img src: product.avatar, className: 'pure-img center-border-img'

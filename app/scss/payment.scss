@@ -1,0 +1,36 @@
+@import 'variables.scss';
+
+.payment {
+  padding: $payment-padding;
+  height: $fixedcard-height / 2;
+  line-height: ($fixedcard-height / 2) - 2 * $payment-padding;
+  font-size: 30px;
+
+  &.left  {
+    & > span, & > img {
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+
+  &.right {
+    & > span {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  &.img-right {
+    text-align: right;
+  }
+
+  & > span {
+    height: 100%;
+    display: block;
+    width: 62.5px;
+  }
+
+  & > img {
+    height: 100%;
+  }
+}

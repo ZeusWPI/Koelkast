@@ -18,11 +18,14 @@ html, body, #content, #content > .pure-g {
   border: 1px solid $accent-blue;
   padding: 10px;
   border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .center-border-img {
   @extend .border-img;
-  width: 100px;
+  max-width: 120px;
+  max-height: 120px;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -30,4 +33,23 @@ html, body, #content, #content > .pure-g {
 .small-border-img {
   @extend .border-img;
   width: 80px;
+}
+
+.payment {
+  & > button, div {
+    height: 40px;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .border-img {
+    padding: 4px;
+  }
+
+  & > button {
+    width: 100%;
+  }
 }

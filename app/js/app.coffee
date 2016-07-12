@@ -33,6 +33,6 @@ render(
 
 { fetchUsers, fetchProducts, fetchBarcodes } = require './actions/action_creators'
 
-fetchUsers().then (result) -> store.dispatch result
-fetchProducts().then (result) -> store.dispatch result
-fetchBarcodes().then (result) -> store.dispatch result
+fetchUsers()(store.dispatch)
+fetchProducts()(store.dispatch)
+fetchBarcodes()(store.dispatch)

@@ -1,11 +1,14 @@
 @import 'variables.scss';
 
 .grid .grid-card {
-  height: 100%;
   text-align: center;
-  padding: 20px;
+  padding: $gridcard-padding;
   color: $dark-secondary-color;
   border: 1px solid $light-primary-color;
+
+  &.fixed {
+    height: $fixedcard-height;
+  }
 
   &:hover {
     cursor: pointer;
@@ -30,6 +33,10 @@
     }
   }
 
+  .nopadding {
+    margin: -$gridcard-padding;
+  }
+
   .name {
     font-variant: small-caps;
   }
@@ -52,6 +59,6 @@
   .icon-down-open {
     display: block;
     font-size: 1.5em;
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 }

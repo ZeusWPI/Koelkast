@@ -1,36 +1,55 @@
 React              = require 'react'
-{ div, img, span } = React.DOM
+FlipCard           = React.createFactory require 'react-flipcard'
+{ div, img, span, button } = React.DOM
 { connect }        = require 'react-redux'
 { incrementProduct } = require '../../actions/action_creators'
 
-CurrentOrder = React.createFactory require './current_order'
 Barcode      = React.createFactory require './barcode'
 
-ProductCard = React.createClass
+Payment = React.createFactory React.createClass
   render: ->
-    { product, increment } = @props
-    div className: 'pure-u-1-4', onClick: increment,
-      div className: 'grid-card',
-        div className: 'avatar',
-          img src: product.avatar, className: 'pure-g center-border-img'
-        span className: 'icon icon-plus', null
+    { product: { avatar }, showFront } = @props
+    div className: 'row nopadding',
+      div className: 'pure-u-1-2',
+        div className: 'payment img-right',
+          img className: 'border-img', src: avatar
+      div className: 'pure-u-1-2',
+        div className: 'payment left',
+          span className: 'icon icon-ccw border-img', onClick: showFront
+      div className: 'pure-u-1-2',
+        div className: 'payment right',
+          span className: 'icon icon-dollar border-img'
+      div className: 'pure-u-1-2',
+        div className: 'payment left',
+          span className: 'border-img', '\u2621'
 
-mapDispatchToProp = (dispatch, ownProps) ->
-  { product } = ownProps
-  increment: ->
-    dispatch incrementProduct(product.id)
-Product = React.createFactory connect(null, mapDispatchToProp)(ProductCard)
+ProductCard = React.createFactory React.createClass
+  showBack: ->
+    @props.setFlipped @props.product.id
+  showFront: ->
+    @props.setFlipped null
+  onFlip: ->
+    document.activeElement.blur()
+  render: ->
+    { product } = @props
+    div className: 'pure-u-1-6',
+      div className: 'grid-card fixed',
+        FlipCard disabled: true, flipped: @props.flipped, onFlip: @onFlip,
+          div onClick: @showBack,
+            div className: 'avatar',
+              img src: product.avatar, className: 'pure-g center-border-img'
+          Payment product: product, showFront: @showFront
 
 Order = React.createClass
+  getInitialState: ->
+    flipped: null
+  setFlipped: (s) ->
+    @setState flipped: s
   render: ->
-    div className: 'pure-g',
-      div className: 'pure-u-4-5',
-        div className: 'grid pure-g',
-          Barcode null
-          @props.products.map (p, i) ->
-            Product key: i, product: p
-      div className: 'pure-u-1-5',
-        CurrentOrder null
+    div className: 'grid',
+      Barcode null
+      @props.products.map (p, i) =>
+        ProductCard key: i, product: p, flipped: p.id == @state.flipped, setFlipped: @setFlipped
 
 mapStateToProps = (state) ->
   products: state.products

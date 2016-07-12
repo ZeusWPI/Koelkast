@@ -44,18 +44,19 @@ module.exports.statusError = (message) ->
   status(ERROR, message)
 
 loadData = (path, callback) ->
-  fetch url.resolve(API_URL, path)
-    .then (response) ->
-      throw new Error('Bad response from server') if response.status >= 400
-      return response.json()
-    .then (data) ->
-      return callback data
+  (dispatch) ->
+    fetch url.resolve(API_URL, path)
+      .then (response) ->
+        throw new Error('Bad response from server') if response.status >= 400
+        return response.json()
+      .then (data) ->
+        dispatch callback data
 
 module.exports.fetchUsers = () ->
-  loadData 'users.json', setUsers
+  loadData '/api/v1/users.json', setUsers
 
 module.exports.fetchProducts = () ->
-  loadData 'products.json', setProducts
+  loadData '/api/v1/products.json', setProducts
 
 module.exports.fetchBarcodes = () ->
-  loadData 'barcodes.json', setBarcodes
+  loadData '/api/v1/barcodes.json', setBarcodes

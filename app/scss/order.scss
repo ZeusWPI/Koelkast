@@ -12,3 +12,26 @@
     color: $white;
   }
 }
+
+.current-order {
+  .actions {
+    button {
+      display: inline-block;
+      float: left;
+      /* width: 100px; */
+      /* height: 100px; */
+      width: 50%;
+      border: 2px solid $dark-primary-color;
+      padding: 10px 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+      font-size: 150%;
+      color: $light-primary-color;
+      background-color: $light-secondary-color;
+      /* border-radius: 50%; */
+      overflow: hidden;
+
+    }
+  }
+}
