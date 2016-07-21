@@ -1,7 +1,5 @@
 url = require 'url'
 {
-  DECREMENT_PRODUCT,
-  INCREMENT_PRODUCT,
   SELECT_USER,
   SET_BARCODES,
   SET_PRODUCTS,
@@ -11,12 +9,6 @@ url = require 'url'
 { PROCESSING, PROCESSED, ERROR } = require '../constants/status_types'
 
 API_URL = 'http://localhost:3000'
-
-module.exports.decrementProduct = (id) ->
-  { type: DECREMENT_PRODUCT, id }
-
-module.exports.incrementProduct = (id) ->
-  { type: INCREMENT_PRODUCT, id }
 
 module.exports.selectUser = (user) ->
   { type: SELECT_USER, user }
@@ -60,3 +52,16 @@ module.exports.fetchProducts = () ->
 
 module.exports.fetchBarcodes = () ->
   loadData '/api/v1/barcodes.json', setBarcodes
+
+module.exports.createOrder = (order) ->
+  fetch url.resolve(API_URL, '/api/v1/orders.json'), {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(order)
+  }
+    .then (response) ->
+      throw new Error('Bad response from server') if response.status >= 400
+      true

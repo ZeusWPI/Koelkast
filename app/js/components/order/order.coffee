@@ -1,27 +1,11 @@
-React              = require 'react'
-FlipCard           = React.createFactory require 'react-flipcard'
+React                      = require 'react'
+FlipCard                   = React.createFactory require 'react-flipcard'
 { div, img, span, button } = React.DOM
-{ connect }        = require 'react-redux'
-{ incrementProduct } = require '../../actions/action_creators'
+{ connect }                = require 'react-redux'
+$                          = require 'jquery'
 
-Barcode      = React.createFactory require './barcode'
-
-Payment = React.createFactory React.createClass
-  render: ->
-    { product: { avatar }, showFront } = @props
-    div className: 'row nopadding',
-      div className: 'pure-u-1-2',
-        div className: 'payment img-right',
-          img className: 'border-img', src: avatar
-      div className: 'pure-u-1-2',
-        div className: 'payment left',
-          span className: 'icon icon-ccw border-img', onClick: showFront
-      div className: 'pure-u-1-2',
-        div className: 'payment right',
-          span className: 'icon icon-dollar border-img'
-      div className: 'pure-u-1-2',
-        div className: 'payment left',
-          span className: 'border-img', '\u2621'
+Barcode = React.createFactory require './barcode'
+Payment = React.createFactory require '../payment/payment'
 
 ProductCard = React.createFactory React.createClass
   showBack: ->
@@ -37,8 +21,8 @@ ProductCard = React.createFactory React.createClass
         FlipCard disabled: true, flipped: @props.flipped, onFlip: @onFlip,
           div onClick: @showBack,
             div className: 'avatar',
-              img src: product.avatar, className: 'pure-g center-border-img'
-          Payment product: product, showFront: @showFront
+              img src: product.avatar, className: 'center-border-img'
+          Payment product: product, showFront: @showFront, user_id: @props.user_id
 
 Order = React.createClass
   getInitialState: ->
@@ -49,7 +33,7 @@ Order = React.createClass
     div className: 'grid',
       Barcode null
       @props.products.map (p, i) =>
-        ProductCard key: i, product: p, flipped: p.id == @state.flipped, setFlipped: @setFlipped
+        ProductCard key: i, product: p, flipped: p.id == @state.flipped, setFlipped: @setFlipped, user_id: @props.params.user_id
 
 mapStateToProps = (state) ->
   products: state.products

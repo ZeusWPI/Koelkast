@@ -3,11 +3,11 @@ React = require 'react'
 
 # STORE
 
-{ createStore }          = require 'redux'
-{ syncHistoryWithStore } = require 'react-router-redux'
+{ createStore, applyMiddleware }           = require 'redux'
+{ syncHistoryWithStore, routerMiddleware } = require 'react-router-redux'
 reducer                  = require './reducers/combine_reducer'
 
-store   = createStore(reducer)
+store   = createStore(reducer, applyMiddleware(routerMiddleware(browserHistory)))
 history = syncHistoryWithStore(browserHistory, store)
 
 # RENDER PAGE

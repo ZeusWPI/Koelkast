@@ -1,58 +1,23 @@
 @import 'variables.scss';
 
 .user-popup {
-  border-width: 0px 1px;
-  border-style: solid;
-  border-color: $light-primary-color;
+  border: 1px solid $light-primary-color;
   color: $white;
-  padding: 5px 0 5px 5px;
 
-  .user-avatar {
-    border-right: 2px solid $light-primary-color;
-    height: 100%;
+  .grid-card {
+    border-top-width: 0;
+    border-bottom-width: 0;
   }
 
-  .products {
-    border-left: 5px solid $light-primary-color;
-    border-right: 5px solid $light-primary-color;
-    padding-bottom: 15px;
-
-    .pure-u-1-5 {
-      a {
-        color: #fff;
-        text-decoration: none;
-      }
-
-      &.other {
-        font-variant: small-caps;
-      }
-
-      & div {
-        width: 100px;
-        height: 100px;
-        margin-left: auto;
-        margin-right: auto;
-        border: 1px solid $accent-blue;
-        padding: 10px;
-
-        span {
-          line-height: 100px;
-          vertical-align: middle;
-          font-size: 20px;
-        }
-
-        img {
-          vertical-align: middle;
-        }
-      }
-    }
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 
-  .user-avatar, .products {
-    padding-top: 20px;
-  }
-
-  & > div {
+  .text {
+    line-height: $fixedcard-height;
+    vertical-align: middle;
+    font-size: 20px;
     text-align: center;
   }
 
