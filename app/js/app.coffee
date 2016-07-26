@@ -5,14 +5,17 @@ React = require 'react'
 
 { createStore, applyMiddleware }           = require 'redux'
 { syncHistoryWithStore, routerMiddleware } = require 'react-router-redux'
-reducer                  = require './reducers/combine_reducer'
+reducer                                    = require './reducers/combine_reducer'
 
 store   = createStore(reducer, applyMiddleware(routerMiddleware(browserHistory)))
 history = syncHistoryWithStore(browserHistory, store)
 
+browserHistory.listen (l) ->
+  store.dispatch clearSelectUser()
+
 # RENDER PAGE
 
-{ render } = require 'react-dom'
+{ render }   = require 'react-dom'
 { Provider } = require 'react-redux'
 Layout       = require './components/layout/layout'
 Users        = require './components/users/users'
@@ -31,8 +34,9 @@ render(
 
 # LOAD INITIAL DATA
 
-{ fetchUsers, fetchProducts, fetchBarcodes } = require './actions/action_creators'
+{ fetchUsers, fetchProducts, fetchBarcodes, clearSelectUser } = require './actions/action_creators'
 
 fetchUsers()(store.dispatch)
 fetchProducts()(store.dispatch)
 fetchBarcodes()(store.dispatch)
+

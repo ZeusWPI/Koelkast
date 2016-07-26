@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import mimetypes
 
-PORT = 8001
+PORT = 8000
 
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):

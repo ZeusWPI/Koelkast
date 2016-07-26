@@ -12,6 +12,8 @@ API_URL = 'http://localhost:3000'
 
 module.exports.selectUser = (user) ->
   { type: SELECT_USER, user }
+module.exports.clearSelectUser = ->
+  { type: SELECT_USER, user: null }
 
 setBarcodes = (barcodes) ->
   { type: SET_BARCODES, barcodes }
